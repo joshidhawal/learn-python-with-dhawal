@@ -14,38 +14,32 @@ def showBoard(board):
         print("")
     print("----------")
 
-def playOnBoard(player,line):
+def playOnBoard(player):
     # This will run the loop letting the assigned player,
     # play until the winning condition is met.
-    while(line!=True):
-        showBoard(board_help)
+    showBoard(board_help)
+    played=False
     pos=int(input("Enter the position where you'd like to enter the symbol : "))
-    a=dict(pos)
-    if(board[a[0]][a[1]]!=player1 or board[a[0]][a[1]]!=player2):
-        board[a[0]][a[1]]=player
-    line=lineCheck()
+    #add method to check for a valid position or not.
+    try:
+        a=dict(pos)
+        if(board[a[0]][a[1]]!=player1 or board[a[0]][a[1]]!=player2):
+            board[a[0]][a[1]]=player
+            played = True
+        else :
+            # Gives invalid position prompt
+            # when there's already another player's
+            # input on the position
+            print("That position is already occupied,
+            Enter a valid position")
+    except:
+        print("Enter a valid position")
+        line=lineCheck()
     showBoard(board)
 
 def lineCheck():
     ## This will check if the winning conditions are true.
-    if (board[0][0]==board[0][1] and board[0][1]==board[0][2]):
-        return True
-    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2]):
-        return True 
-    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2]):
-        return True
-    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2]):
-        return True
-    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2]):
-        return True
-    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2]):
-        return True
-    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2]):
-        return True
-    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2]):
-        return True
-    else :
-        return False
+    
         
 
 
