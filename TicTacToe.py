@@ -22,7 +22,8 @@ def playOnBoard(boardIndexHelp,player):
         showBoard(board_help)
         pos=int(input("Enter the position where you'd like to enter the symbol : "))
         #add method to check for a valid position or not.
-        a=boardIndexHelp(pos)
+        print ("The entered Position is : "+str(pos))
+        a=boardIndexHelp[pos]
         print(a)
         try:
             if(board[a[0]][a[1]]!=player1 or board[a[0]][a[1]]!=player2):
@@ -35,8 +36,7 @@ def playOnBoard(boardIndexHelp,player):
                 # input on the position
                 print("That position is already occupied,Enter a valid position")
         except Exception as e :
-            print(e)
-            print("Enter a valid position")
+            print("Enter a valid position \n The Error is : "+e)
         return notPlayed
 
     
@@ -44,30 +44,30 @@ def lineCheck(line):
     ## This will check if the winning conditions are true.
     if (board[0][0]==board[0][1] and board[0][1]==board[0][2] and board[0][2]!=' '):
         return False
-    if (board[1][0]==board[1][1] and board[1][1]==board[1][2] and board[1][2]!=' '):
+    elif (board[1][0]==board[1][1] and board[1][1]==board[1][2] and board[1][2]!=' '):
         return False
-    if (board[2][0]==board[2][1] and board[2][1]==board[2][2] and board[2][2]!=' '):
+    elif (board[2][0]==board[2][1] and board[2][1]==board[2][2] and board[2][2]!=' '):
         return False
-    if (board[0][0]==board[1][0] and board[1][0]==board[2][0] and board[2][0]!=' '):
+    elif (board[0][0]==board[1][0] and board[1][0]==board[2][0] and board[2][0]!=' '):
         return False
-    if (board[0][1]==board[1][1] and board[1][1]==board[2][1] and board[2][1]!=' '):
+    elif (board[0][1]==board[1][1] and board[1][1]==board[2][1] and board[2][1]!=' '):
         return False
-    if (board[0][2]==board[1][2] and board[1][2]==board[2][2] and board[2][2]!=' '):
+    elif (board[0][2]==board[1][2] and board[1][2]==board[2][2] and board[2][2]!=' '):
         return False
-    if (board[0][0]==board[1][1] and board[1][1]==board[2][2] and board[2][2]!=' '):
+    elif (board[0][0]==board[1][1] and board[1][1]==board[2][2] and board[2][2]!=' '):
         return False
-    if (board[2][0]==board[1][1] and board[1][1]==board[0][2] and board[0][2]!=' '):
+    elif (board[2][0]==board[1][1] and board[1][1]==board[0][2] and board[0][2]!=' '):
         return False
+    else:
+        return True
     
         
 
 
 board=[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
 board_help=[['1','2','3'],['4','5','6'],['7','8','9']]
-player1='X'
-player2='O'
-#player1=input("Enter the Symbol you want to use for player1 : ")
-#player2=input("Enter the Symbol you want to use for player2 : ")
+player1=input("Enter the Symbol you want to use for player1 : ")
+player2=input("Enter the Symbol you want to use for player2 : ")
 
 print("Player 1 will use : "+player1+" and Player 2 will use : "+player2)
 boardIndexHelp={1:[0,0],2:[0,1],3:[0,2],
@@ -81,9 +81,15 @@ while(line):
     if previousPlayer==player2:
         playOnBoard(boardIndexHelp,player1)
         line = lineCheck(line)
+        previousPlayer=player1
+        if line==False:
+            print("The Winner is : "+player1)
     else:
         playOnBoard(boardIndexHelp,player2)
         line = lineCheck(line)
+        previousPlayer=player2
+        if line==False:
+            print("The Winner is : "+player1)
 
 
 
