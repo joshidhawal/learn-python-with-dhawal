@@ -80,10 +80,10 @@ def lineCheck(line):
 
 board=[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
 board_help=[['1','2','3'],['4','5','6'],['7','8','9']]
-#player1=input("Enter the Symbol you want to use for player1 : ")
-#player2=input("Enter the Symbol you want to use for player2 : ")
-player1='X'
-player2='O'
+player1=input("Enter the Symbol you want to use for player1 : ")
+player2=input("Enter the Symbol you want to use for player2 : ")
+#player1='X'
+#player2='O'
 
 print("Player 1 will use : "+player1+" and Player 2 will use : "+player2)
 boardIndexHelp={1:[0,0],2:[0,1],3:[0,2],
