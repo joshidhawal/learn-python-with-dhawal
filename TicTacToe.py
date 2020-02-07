@@ -49,6 +49,7 @@ def playOnBoard(boardIndexHelp,player):
                 # when there's already another player's
                 # input on the position
                 print("That position is already occupied,Enter a valid position")
+                notPlayed=True
         except Exception as e :
             print("Enter a valid position \n The Error is : "+e)
         return notPlayed
