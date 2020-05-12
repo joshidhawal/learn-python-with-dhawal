@@ -2,6 +2,17 @@
 This Program is to play Tic Tac Toe game in CLI
 
 """
+import os
+from os import system,name
+from time import sleep
+
+def clearScreenOutput():
+    #sleep(5)
+    #for windows
+    if name=='nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 def checkBoardFill():
     fill = 0
@@ -32,9 +43,11 @@ def playOnBoard(boardIndexHelp,player):
     # play until the winning condition is met.
     notPlayed = True
     while (notPlayed):
+        
         print("Reference Board for Index Position : ")
         showBoard(board_help)
         pos=int(input("Enter the position where you'd like to enter the symbol : "))
+        clearScreenOutput()
         #add method to check for a valid position or not.
         a=boardIndexHelp[pos]
         try:
@@ -52,7 +65,7 @@ def playOnBoard(boardIndexHelp,player):
                 notPlayed=True
         except Exception as e :
             print("Enter a valid position \n The Error is : "+e)
-        return notPlayed
+            notPlayed=True
 
     
 def lineCheck(line):
@@ -81,12 +94,15 @@ def lineCheck(line):
 
 board=[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
 board_help=[['1','2','3'],['4','5','6'],['7','8','9']]
-player1=input("Enter the Symbol you want to use for player1 : ")
+player1=input("Enter the Symbol you want to use for player1 : ") 
 player2=input("Enter the Symbol you want to use for player2 : ")
 #player1='X'
 #player2='O'
 
 print("Player 1 will use : "+player1+" and Player 2 will use : "+player2)
+
+clearScreenOutput()
+
 boardIndexHelp={1:[0,0],2:[0,1],3:[0,2],
       4:[1,0],5:[1,1],6:[1,2],
       7:[2,0],8:[2,1],9:[2,2]}
@@ -95,15 +111,16 @@ showBoard(board)
 line = True
 previousPlayer=player2
 while(line):
+    
     if previousPlayer==player2:
-        print("Play : Player "+player1)
+        print("\nPLAY : PLAYER "+player1)
         playOnBoard(boardIndexHelp,player1)
-        line = lineCheck(line)
         previousPlayer=player1
+        line = lineCheck(line)
         if line==False:
             print("The Winner is : "+player1)
     else:
-        print("Play : Player "+player2)
+        print("\nPLAY : PLAYER "+player2)
         playOnBoard(boardIndexHelp,player2)
         line = lineCheck(line)
         previousPlayer=player2
